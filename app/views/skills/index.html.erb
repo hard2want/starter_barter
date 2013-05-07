@@ -1,0 +1,30 @@
+<h1>Skills</h1>
+
+<p><%= link_to 'Add a New Skill', new_skill_url %></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Task</th>
+      <th>User</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% @skills.each do |skill| %>
+    <tr>
+      <td><%= skill.task %></td>
+      <td><%= skill.user.username %></td>
+
+      <td><%= link_to 'Show', skill_url(skill) %></td>
+      <td><%= link_to 'Edit', edit_skill_url(skill) %></td>
+      <td><%= link_to 'Destroy', skill_url(skill), method: 'delete', data: { confirm: "Do you really want to delete this skill?" } %></td>
+
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+

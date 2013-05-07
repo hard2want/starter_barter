@@ -1,0 +1,32 @@
+<h1>New Offer</h1>
+
+
+<%= form_tag(offers_url, method: 'post') do %>
+
+
+  <div>
+    <%= label_tag :user_id %><br />
+    <%= select_tag :user_id, options_from_collection_for_select(User.all, "id", "username") %>
+  </div>
+
+    <div>
+    <%= label_tag :skill_id %><br />
+    <%= select_tag :skill_id, options_from_collection_for_select(Skill.all, "id", "task") %>
+
+  </div>
+
+    <div>
+    <%= label_tag :other_user_id %><br />
+    <%= select_tag :other_user_id, options_from_collection_for_select(User.all, "id", "username") %>
+  </div>
+
+    <div>
+    <%= label_tag :other_skill_id %><br />
+    <%= select_tag :other_skill_id, options_from_collection_for_select(Skill.all, "id", "task") %>
+  </div>
+
+
+  <div>
+    <%= submit_tag "Create Offer" %>
+  </div>
+<% end %>

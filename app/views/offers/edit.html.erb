@@ -1,0 +1,31 @@
+<h1>Editing Offer #<%= @offer.id %></h1>
+
+
+<%= form_tag(offer_url(@offer), method: 'put') do %>
+
+  <div>
+    <%= label_tag :user_id %><br />
+    <%= number_field_tag :user_id, @offer.user_id %>
+  </div>
+
+  <div>
+    <%= label_tag :skill_id %><br />
+    <%= number_field_tag :skill_id, @offer.skill_id %>
+  </div>
+
+  <div>
+    <%= label_tag :other_user_id %><br />
+    <%= number_field_tag :other_user_id, @offer.other_user_id %>
+  </div>
+
+  <div>
+    <%= label_tag :other_skill_id %><br />
+    <%= number_field_tag :other_skill_id, @offer.other_skill_id %>
+  </div>
+
+  
+  <div>
+    <%= submit_tag "Update Offer" %>
+  </div>
+
+<% end %>

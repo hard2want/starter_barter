@@ -1,0 +1,39 @@
+<h1>User: #<%= @user.id %></h1>
+
+<p>
+  <b>Username:</b>
+  <%= @user.username %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @user.email %>
+</p>
+
+<p>
+  <b>Bio:</b>
+  <%= @user.bio %>
+</p>
+
+<p>
+  <b>Skills:</b>
+  <% @user.skills.each do |s| %>
+  <%= s.task %><br>
+  <% end %>
+</p>
+<p>
+  <b>Offers:</b><br/>
+  <% @user.offers.each do |o| %>
+    <%= User.find_by_id(o.other_user_id).username %> is offering to <%= Skill.find_by_id(o.other_skill_id).task %> in exchange for <%= Skill.find_by_id(o.skill_id).task %>
+
+     <%= form_tag accept_offer_path do %>
+        <%= hidden_field_tag :offer_id, o.id %>
+        <%= hidden_field_tag :user_id, @user.id %>
+        <%= submit_tag 'Accept' %>
+      <% end %>
+      <% if o.accepted == true %><p>The offer has been accepted!</p><% end %>
+  <% end %>
+
+
+</p>
+
